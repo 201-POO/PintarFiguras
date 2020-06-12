@@ -25,7 +25,8 @@ public class NewJFrame extends javax.swing.JFrame {
         //vector.add(new Circle(20, 50, 200, Color.blue));
         //vector.add(new Circle(120, 150, 100, Color.ORANGE));
         //vector.add(new Rectangle(200, 250, 100, 200, Color.ORANGE));
-        int N = 2;
+        //vector.add(new Triangle(100, 350, 100, Color.ORANGE));
+        int N = 300;
         int h = this.getHeight();
         int w = this.getWidth();
         for (int i = 0; i < N; i++) {
@@ -33,6 +34,11 @@ public class NewJFrame extends javax.swing.JFrame {
                 Color color = new Color((int) (Math.random() * 250), (int) (Math.random() * 250), (int) (Math.random() * 250));
                 int radio = (int) (Math.random() * 30);
                 vector.add(new Circle((int) (Math.random() * w), (int) (Math.random() * h), radio, color));
+                int lado = (int) (Math.random() * 30);
+                int izq = (int) (Math.random() * 30);
+                int der = (int) (Math.random() * 30);
+                vector.add(new Triangle((int) (Math.random() * w), (int) (Math.random() * h), lado, izq, der, color));
+                
             } else {
                 int ancho = (int) (Math.random() * 30);
                 int alto = (int) (Math.random() * 30);
@@ -46,12 +52,7 @@ public class NewJFrame extends javax.swing.JFrame {
         super.paint(g);
         g.setFont(new Font("Taahoma", Font.PLAIN, 25));
         g.drawString("HOLA FIGURAS", 50, 100);
-        int xpoints [] = {60,100,20,60};
-	int ypoints [] = {120,190,190,120};
-	int npoints = 4;
-        g.setColor(Color.ORANGE);
-        g.drawPolygon(xpoints,ypoints,npoints);
-        g.fillPolygon(xpoints,ypoints,npoints);
+      
 
         for (Figure2D d : vector) {
             d.pintar(g);
