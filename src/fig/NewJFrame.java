@@ -8,12 +8,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  *
- * @author 
+ * @author
  */
 public class NewJFrame extends javax.swing.JFrame {
 
     static List<Figure2D> vector = new CopyOnWriteArrayList<Figure2D>();
-    
+
     public NewJFrame() {
         initComponents();
         llenar_vector();
@@ -21,36 +21,24 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     public void llenar_vector() {
-        vector.add(new Circle(20,50,200,Color.blue));
-        vector.add(new Circle(120,150,100,Color.ORANGE));
-        vector.add(new Rectangle(200,250,100,200,Color.ORANGE));
-        
-        /*
-        int N, h, w;
-    int i,x,y,r,alto,ancho;
-    Color color;
-    N=300;
-    vector=new Figura[N];
-    h= this.getHeight();
-    w=this.getWidth();
-  
-    for(i=0;i<N;i++)
-    {
-       x=(int)(Math.random()*w);
-       y=(int)(Math.random()*h);
-       color=new Color((int)(Math.random()*250),(int)(Math.random()*250),(int)(Math.random()*250));
-         if( (int)(Math.random()*2)==0)
-         {
-               r=(int)(Math.random()*30);
-               vector[i]=new Circulo(x,y,r,color);
-         }
-         else
-         {
-               alto=(int)(Math.random()*30);
-               ancho=(int)(Math.random()*30);
-               vector[i]=new Rectangulo(x,y,alto,ancho,color);
-         }
-    }*/
+        //vector.add(new Circle(20, 50, 200, Color.blue));
+        //vector.add(new Circle(120, 150, 100, Color.ORANGE));
+        //vector.add(new Rectangle(200, 250, 100, 200, Color.ORANGE));
+        int N = 300;
+        int h = this.getHeight();
+        int w = this.getWidth();
+        for (int i = 0; i < N; i++) {
+            if ((int) (Math.random() * 2) == 0) {
+                Color color = new Color((int) (Math.random() * 250), (int) (Math.random() * 250), (int) (Math.random() * 250));
+                int radio = (int) (Math.random() * 30);
+                vector.add(new Circle((int) (Math.random() * w), (int) (Math.random() * h), radio, color));
+            } else {
+                int ancho = (int) (Math.random() * 30);
+                int alto = (int) (Math.random() * 30);
+                Color color = new Color((int) (Math.random() * 250), (int) (Math.random() * 250), (int) (Math.random() * 250));
+                vector.add(new Rectangle((int) (Math.random() * w), (int) (Math.random() * h), ancho, alto, color));
+            }
+        }
     }
 
     public void paint(Graphics g) {
