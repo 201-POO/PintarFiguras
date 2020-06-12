@@ -1,6 +1,7 @@
 package fig;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class NewJFrame extends javax.swing.JFrame {
 
-    static List<Figure2D> vector = new CopyOnWriteArrayList<Figure2D>();
+    List<Figure2D> vector = new CopyOnWriteArrayList<Figure2D>();
 
     public NewJFrame() {
         initComponents();
@@ -24,7 +25,7 @@ public class NewJFrame extends javax.swing.JFrame {
         //vector.add(new Circle(20, 50, 200, Color.blue));
         //vector.add(new Circle(120, 150, 100, Color.ORANGE));
         //vector.add(new Rectangle(200, 250, 100, 200, Color.ORANGE));
-        int N = 300;
+        int N = 2;
         int h = this.getHeight();
         int w = this.getWidth();
         for (int i = 0; i < N; i++) {
@@ -43,6 +44,15 @@ public class NewJFrame extends javax.swing.JFrame {
 
     public void paint(Graphics g) {
         super.paint(g);
+        g.setFont(new Font("Taahoma", Font.PLAIN, 25));
+        g.drawString("HOLA FIGURAS", 50, 100);
+        int xpoints [] = {60,100,20,60};
+	int ypoints [] = {120,190,190,120};
+	int npoints = 4;
+        g.setColor(Color.ORANGE);
+        g.drawPolygon(xpoints,ypoints,npoints);
+        g.fillPolygon(xpoints,ypoints,npoints);
+
         for (Figure2D d : vector) {
             d.pintar(g);
         }
@@ -53,21 +63,32 @@ public class NewJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("HOLAAAAAAAAAAAAA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 785, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(425, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(133, 133, 133))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 514, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addComponent(jLabel1)
+                .addContainerGap(372, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -97,6 +118,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
